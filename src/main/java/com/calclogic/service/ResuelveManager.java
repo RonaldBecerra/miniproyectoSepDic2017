@@ -51,6 +51,7 @@ public interface ResuelveManager {
      */
     public List<Resuelve> getAllResuelveByUser(String userLogin);
     
+    /*jsjsjj*/
     public List<Resuelve> getAllResuelveByUserWithSol(String userLogin);
     
     public List<Resuelve> getAllResuelveByUserWithSolWithoutAxiom(String userLogin,String teoNum);
