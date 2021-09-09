@@ -30,7 +30,7 @@ jobs:
       - name: Publish Project on Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: ${{ secrets.PIPEGITHUB }}
+          heroku_api_key: ${{ secrets.HEROKU_API_TOKEN_DEVELOPMENT }}
           heroku_app_name: "testcalclogicronald"
           heroku_email: "ronaldbecerrag@gmail.com"
       - name: Deploy App on Heroku
