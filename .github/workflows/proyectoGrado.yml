@@ -36,3 +36,6 @@ jobs:
           heroku_email: "ronaldbecerrag@gmail.com"
       - name: Deploy App on Heroku
         run: mvn heroku:deploy-war
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
