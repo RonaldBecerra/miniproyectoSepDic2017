@@ -27,7 +27,7 @@ jobs:
       - name: Code Coverage on Codecov
         uses: codecov/codecov-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: CODECOV_TOKEN='83b03a9f-0d6e-4bad-adbe-4b767210a934'
       - name: Publish Project on Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
