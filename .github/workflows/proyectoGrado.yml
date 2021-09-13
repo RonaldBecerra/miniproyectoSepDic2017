@@ -31,7 +31,7 @@ jobs:
       - name: Publish Project on Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: ${{ secrets.HEROKU_API_TOKEN_DEVELOPMENT }}
+          heroku_api_key: HEROKU_API_TOKEN_DEVELOPMENT='3b6e4f97-d99e-496a-84eb-c4d8f800af72'
           heroku_app_name: "testcalclogicronald"
           heroku_email: "ronaldbecerrag@gmail.com"
       - name: Deploy App on Heroku
