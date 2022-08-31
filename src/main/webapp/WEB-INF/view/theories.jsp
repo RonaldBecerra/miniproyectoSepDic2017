@@ -316,7 +316,7 @@
                                 <td>${simbolo.getNotacion()}</td>
                                 <td>${simbolo.getTeoria().getNombre()}</td>
                                 <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="editSimbol(${loop.index})"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="editSimbol(${simbolo.getId()})"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="" class="edit" data-toggle="modal" onclick="deleteSimbolo(${simbolo.getId()})"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -492,6 +492,7 @@
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
                 }             
             });
+            var simboloTable = {};
             for (let i = 0; i < table.rows().count(); i ++){
                 var temp = table.row(i).data();
                 if (temp[4] == 'Yes'){
@@ -509,6 +510,7 @@
                 }else{
                     temp[5] = 'None'
                 }
+                simboloTable[parseInt(temp[0])] = temp;
                 table.row(i).data(temp).invalidate().draw();
             }
             function deleteSimbolo(idSimbolo){
@@ -526,8 +528,8 @@
                     }
                 });
             }
-            function editSimbol(row_number){
-                fields = table.row(row_number).data();
+            function editSimbol(id){
+                fields = simboloTable[id];
                 $('#id-edit').val(fields[0]);
                 $('#notacion-latex-edit').val(fields[2]);
                 $('#argumentos-edit').val(fields[3]);

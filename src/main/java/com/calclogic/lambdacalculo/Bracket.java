@@ -251,8 +251,9 @@ public class Bracket extends Term{
     
     @Override
     public String toStringWithInputs(SimboloManager s, String position, String rootId) {
-        char ascii = (char) x.indice; 
-        return "(E^{"+ascii+"}:"+t.toStringWithInputs(s,position,rootId)+")";
+        return t.toStringWithInputs(s, position, rootId);
+        //char ascii = (char) x.indice; 
+        //return "(E^{"+ascii+"}:"+t.toStringWithInputs(s,position,rootId)+")";
     }
     
     public ToString toStringAbrv(ToString toString)

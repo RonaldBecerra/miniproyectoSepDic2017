@@ -770,8 +770,8 @@ public class PerfilController {
         int teoId = Integer.parseInt(idTeo);
         Teorema teorema = teoremaManager.getTeorema(teoId);
         Term teoTerm = teorema.getTeoTerm();
-        String teoC = teoTerm.toStringFormatC(simboloManager,"",0,"teoremaSymbolsId_").replace("\\", "\\\\");
-        String teoInputs = teoTerm.toStringWithInputs(simboloManager,"","teoremaSymbolsId_").replace("\\", "\\\\");
+        String teoC = teoTerm.evaluar().toStringFormatC(simboloManager,"",0,"teoremaSymbolsId_").replace("\\", "\\\\");
+        String teoInputs = teoTerm.evaluar().toStringWithInputs(simboloManager,"","teoremaSymbolsId_").replace("\\", "\\\\");
         Resuelve resuelve = resuelveManager.getResuelveByUserAndTeorema(username, teoId);
         
         map.addAttribute("navUrlPrefix", "../");
