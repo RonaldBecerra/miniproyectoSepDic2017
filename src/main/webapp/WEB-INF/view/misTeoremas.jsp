@@ -124,13 +124,13 @@
     
      </div>
      </div>
-     <div id="panelSoluciones" class="col-lg-2 d-none">
+     <div id="panelSoluciones" class="col-lg-2 d-none panel-scrolleable">
          <center><h3 class="subtitle"> Proofs</h3></center>
            <ul id="listaSoluciones">
             
            </ul>
      </div>
-     <div class="col-lg-5" >
+     <div class="col-lg-5 panel-scrolleable" >
        <h5 id="formula"></h5>
      </div>
     </div>

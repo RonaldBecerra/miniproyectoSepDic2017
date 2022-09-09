@@ -34,10 +34,15 @@
 }
 
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: 100%;
+  width: initial;
   z-index: 1;
+}
+
+.panel-scrolleable {
+    height: 350px;
+    overflow: scroll;
 }
 
 .btn {

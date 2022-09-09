@@ -40,6 +40,10 @@ public class SimboloManagerImpl implements SimboloManager {
     @Autowired
     public SimboloManagerImpl(SimboloDAO simboloDAO) {
         this.simboloDAO = simboloDAO;
+        this.updateSymbolsCache();
+    }
+    
+    public void updateSymbolsCache() {
         List<Simbolo> l = simboloDAO.getAllSimbolo();
         Simbolo last = l.get(l.size()-1);
         int lastIndex = last.getId();
@@ -81,10 +85,11 @@ public class SimboloManagerImpl implements SimboloManager {
     @Transactional
     public Simbolo addSimbolo(Simbolo simbolo){
         simboloDAO.addSimbolo(simbolo);
-        List<Simbolo> l = simboloDAO.getAllSimbolo();
-        symbolsCache = new Simbolo[l.size()];
-        for (int i=0; i < l.size(); i++)
-            symbolsCache[i] = l.get(i);
+        //List<Simbolo> l = simboloDAO.getAllSimbolo();
+        //symbolsCache = new Simbolo[l.size()];
+        //for (int i=0; i < l.size(); i++)
+        //    symbolsCache[i] = l.get(i);
+        this.updateSymbolsCache();
         return simbolo;
     }
     
@@ -169,6 +174,7 @@ public class SimboloManagerImpl implements SimboloManager {
         //System.out.println(soluciones.size());
         
         simboloDAO.deleteSimbolo(id);
+        this.updateSymbolsCache();
         return "Symbol deleted";
     }
     

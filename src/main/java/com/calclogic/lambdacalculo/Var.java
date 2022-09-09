@@ -212,7 +212,8 @@ public class Var extends Term{
     public String toStringWithInputs(SimboloManager s, String position, String rootId) {
         System.out.println("\\FormInput{"+rootId + position+"}");
         if(alias == null ) {
-            char ascii = (char) indice; 
+            char ascii = (char) indice;
+            System.out.println(indice);
             return "\\FormInput{"+rootId + position+"}";
         }else {
             return alias;

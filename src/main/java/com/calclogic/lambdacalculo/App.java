@@ -709,15 +709,17 @@ public class App extends Term{
         int i = 1;
         while (!stk.empty()) {//int i=0; i < sym.getArgumentos(); i++)
          Term arg = stk.pop();
-        if (arg instanceof Bracket) {
+         if (arg instanceof Bracket) {
             Term aux_arg = arg;
             int index = 1;
             while (aux_arg instanceof Bracket) {
-                values.put("v"+index,((Bracket) aux_arg).x.toStringWithInputs(s, position, rootId));
+                Bracket bracket = (Bracket) aux_arg;
+                bracket.x.indice = bracket.x.indice + 65;
+                values.put("v"+index,bracket.x.toStringWithInputs(s, position, rootId));
                 index++;
                 aux_arg = ((Bracket) aux_arg).t;
             }
-        }
+         }
          if (notation.contains("%(na"+i+")"))
                values.put("na"+i,arg.toStringWithInputs(s,position+i,rootId));
          else if (notation.contains("%(a"+i+")"))
