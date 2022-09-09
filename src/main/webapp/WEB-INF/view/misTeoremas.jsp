@@ -270,8 +270,8 @@
         }
         
         function moverPanel() {
-            $('#panelSoluciones').css("margin-top", window.pageYOffset);
-            $('#formula').css("margin-top", window.pageYOffset);
+            $('.panel-scrolleable').css("margin-top", window.pageYOffset);
+            //$('#formula').css("margin-top", window.pageYOffset);
         }
         window.onscroll = function() {moverPanel()};
 
