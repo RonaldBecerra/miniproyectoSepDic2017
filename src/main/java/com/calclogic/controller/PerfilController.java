@@ -703,6 +703,7 @@ public class PerfilController {
             String[] boundVars = {""};
             String freeVars;
             teoTerm = parser.start_rule(predicadoid2,predicadoManager,simboloManager,boundVars).value;
+            //System.out.println(teoTerm);
             freeVars = teoTerm.stFreeVars();
             String bndVars = teoTerm.getBoundVarsComma();
             String variables = bndVars + ";" + freeVars;

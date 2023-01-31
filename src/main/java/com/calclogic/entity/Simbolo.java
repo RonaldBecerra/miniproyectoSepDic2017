@@ -3,6 +3,7 @@ package com.calclogic.entity;
 
 import com.calclogic.lambdacalculo.TypeVerificationException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -244,8 +245,9 @@ public class Simbolo  extends notacionOwner implements java.io.Serializable {
             return tipo1;
         else if (tipo1.equals(tipo2))
             return tipo1;
-        else if (tipo1.length() == 1 && tipo1.length() == 1 && !tipo1.equals(tipo2))
+        else if (tipo1.length() == 1 && tipo1.length() == 1 && !tipo1.equals(tipo2)) {
             throw new TypeVerificationException();
+        }
         String[] t1 = splitTipo(tipo1);
         String[] t2 = splitTipo(tipo2);
         return matchTipo(t1, t2);

@@ -995,6 +995,7 @@ public class App extends Term{
         Collections.reverse(args);
         String type_c;
         int cid;
+        boolean isFunApp = false;
         if (aux instanceof Const) {
             Const c = (Const) aux;
             type_c = c.getType(D, simboloManager);
@@ -1006,9 +1007,10 @@ public class App extends Term{
         else {
             cid = -1;
             type_c = "*";
-            for (Term arg: args) {
+            /*for (Term arg: args) {
                 type_c = type_c + "->*";
-            }
+            }*/
+            isFunApp = true;
             type_c = aux.checkType(D, simboloManager, type_c);
         }
         if (isQuant) { 
@@ -1033,7 +1035,7 @@ public class App extends Term{
         
         String[] type_c_split = Simbolo.splitTipo(type_c);
         
-        if (type_c_split.length-1 != args.size()) {
+        if (type_c_split.length-1 != args.size() && !isFunApp) {
             System.out.println("La aridad esperada del simbolo: "+type_c+" no coincide con la expresion: "+this);
             throw new TypeVerificationException();
         }
@@ -1046,7 +1048,11 @@ public class App extends Term{
         else {
             int i = 0;
             for (Term arg: args) {
-                String param_type = type_c_split[i];
+                String param_type;
+                if (isFunApp)
+                    param_type = "*";
+                else
+                    param_type = type_c_split[i];
                 arg.checkType(D2, simboloManager, param_type);
                 i++;
             }
