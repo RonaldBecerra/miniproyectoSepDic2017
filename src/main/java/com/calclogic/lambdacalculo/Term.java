@@ -366,6 +366,7 @@ public abstract class Term implements Cloneable, Serializable{
                     type = "t";
                 }
             }
+            System.out.println(type);
             int opId;
             if (type.equals("b"))
                opId = 1;
@@ -387,16 +388,25 @@ public abstract class Term implements Cloneable, Serializable{
             t = arg2;
         else {
             String type;
+            String type1 = "*";
+            String type2;
             try {
-              type = arg2.getType(s);
+                type1 = arg1.getType(s);
             }
             catch (TypeVerificationException e){
-                try {
-                   type = arg1.getType(s);
-                }
-                catch (TypeVerificationException e2){
-                    type = "t";
-                }
+                type1 = "*";
+            }
+            try {
+                type2 = arg2.getType(s);
+            }
+            catch (TypeVerificationException e){
+                type2 = "*";
+            }
+            try {
+                type = Simbolo.matchTipo(type1, type2);
+            }
+            catch (TypeVerificationException e){
+                type = "t";
             }
             if (type.equals("*") && (arg2 instanceof Var && !(arg1 instanceof Var)) )
                 type = "b";
